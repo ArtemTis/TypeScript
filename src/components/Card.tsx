@@ -17,7 +17,7 @@ const Card: React.FC<CardProps> = ({ width, height, children, variant, clickFunc
 
     const [state, setState] = useState(0)
     return (
-        <div onClick={() => clickFunc(state)}
+        <div onClick={() => clickFunc(state)} 
          style={{
             width, height, border: variant === CardVariant.outlinde ? '1px solid gray' : 'none',
         background: variant === CardVariant.primary ? 'lightgray' : ''

@@ -1,13 +1,62 @@
-import Card, { CardVariant } from "./components/Card";
-
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { ITodo, IUser } from './types/types';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import UserPage from './components/UserPage';
+import TodosPage from './components/TodosPage';
+import { NavLink } from 'react-router-dom';
+import UserItemPage from './components/UserItemPage';
+import TodoItemPage from './components/TodoItemPage';
 
 function App() {
+  const [users, setUsers] = useState<IUser[]>([]);
+  const [todos, setTodos] = useState<ITodo[]>([])
+
+  useEffect(() => {
+    fetchUsers()
+    fetchTodos()
+  }, [])
+
+  async function fetchUsers() {
+    try {
+      const response = await axios.get<IUser[]>('https://jsonplaceholder.typicode.com/users');
+      setUsers(response.data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
+  async function fetchTodos() {
+    try {
+      const response = await axios.get<ITodo[]>('https://jsonplaceholder.typicode.com/todos?_limit=10');
+      setTodos(response.data);
+    } catch (e) {
+      console.error(e);
+    }
+  }
+
   return (
-    <div className="App">
+    <div className="App" >
+      {/* <EventsExample/>
       <Card width="200px" height="200px" variant={CardVariant.outlinde} clickFunc={(num) => console.log('click ' + num)
-      }>
+      } >
         <button>Btn</button>
-      </Card>
+      </Card> */}
+
+      {/* <UserList users={users}/> */}
+
+      <BrowserRouter>
+        <div>
+          <NavLink to={"/users"}>Пользователи</NavLink>
+          <NavLink to={"/todos"}>Список дел</NavLink>
+        </div>
+        <Routes>
+          <Route path={'/users'} element={<UserPage />} />
+          <Route path={'/todos'} element={<TodosPage />} />
+          <Route path={'/todos/:id'} element={<TodoItemPage/>} />
+          <Route path={'/users/:id'} element={<UserItemPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
