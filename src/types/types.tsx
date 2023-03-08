@@ -4,10 +4,7 @@ export interface IAddress{
     zipcode: string
 }
 
-export interface IUser {
-    id: number;
-    name: string;
-    email: string;
+export interface IUser extends IHuman{   
     address: IAddress;
 }
 
@@ -15,4 +12,10 @@ export interface ITodo {
     id: number;
     title: string;
     completed: boolean;
+}
+
+export interface IHuman {
+    id: number;
+    name: string;
+    email: string;
 }
