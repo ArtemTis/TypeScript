@@ -7,6 +7,7 @@ import TodosPage from './components/TodosPage';
 import { NavLink } from 'react-router-dom';
 import UserItemPage from './components/UserItemPage';
 import TodoItemPage from './components/TodoItemPage';
+import Table from './components/table/Table';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -35,6 +36,24 @@ function App() {
     }
   }
 
+  let mounth: number[] = [];
+  for (let i = 0; i < 30; i++) {
+    mounth.push(i+1)
+  }
+
+  let time: string[] = [];
+  for (let i = 0; i < 24; i++) {
+    if (i < 10) {
+      time.push(`0${i}:00`)
+    }else{
+      time.push(`${i}:00`)
+    }
+  }
+
+  // const transpose = (row, col) => {
+
+  // }
+
   return (
     <div className="App" >
       {/* <EventsExample/>
@@ -45,18 +64,21 @@ function App() {
 
       {/* <UserList users={users}/> */}
 
-      <BrowserRouter>
+      <Table rows={mounth} columns={time}/>
+
+      {/* <BrowserRouter>
         <div>
           <NavLink to={"/users"}>Пользователи</NavLink>
           <NavLink to={"/todos"}>Список дел</NavLink>
+
         </div>
         <Routes>
           <Route path={'/users'} element={<UserPage />} />
           <Route path={'/todos'} element={<TodosPage />} />
-          <Route path={'/todos/:id'} element={<TodoItemPage/>} />
+          <Route path={'/todos/:id'} element={<TodoItemPage />} />
           <Route path={'/users/:id'} element={<UserItemPage />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
