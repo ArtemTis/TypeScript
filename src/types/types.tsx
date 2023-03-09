@@ -1,10 +1,10 @@
-export interface IAddress{
+export interface IAddress {
     street: string;
     city: string;
     zipcode: string
 }
 
-export interface IUser extends IHuman{   
+export interface IUser extends IHuman {
     address: IAddress;
 }
 
@@ -18,4 +18,10 @@ export interface IHuman {
     id: number;
     name: string;
     email: string;
+}
+
+
+export interface ITable {
+    rows: string[] | number[];
+    columns: string[] | number[];
 }

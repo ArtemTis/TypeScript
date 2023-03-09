@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { ITodo, IUser } from './types/types';
+import React, { useEffect, useState, useRef } from 'react'
+import { ITodo, IUser, ITable } from './types/types';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import UserPage from './components/UserPage';
 import TodosPage from './components/TodosPage';
@@ -38,21 +38,42 @@ function App() {
 
   let mounth: number[] = [];
   for (let i = 0; i < 30; i++) {
-    mounth.push(i+1)
+    mounth.push(i + 1)
   }
 
   let time: string[] = [];
   for (let i = 0; i < 24; i++) {
     if (i < 10) {
       time.push(`0${i}:00`)
-    }else{
+    } else {
       time.push(`${i}:00`)
     }
   }
 
-  // const transpose = (row, col) => {
-
-  // }
+  const [transpose, setTranspose] = useState<ITable>({ rows: mounth, columns: time });
+  let flip = useRef<boolean>(true);
+  
+  const transposeHandler = (e: React.MouseEvent<HTMLButtonElement>): void => {
+     
+    if (flip.current) {
+      setTranspose(() => {
+        return {
+          rows: time,
+          columns: mounth
+        }
+      })
+      flip.current = false;
+    } else {
+      setTranspose(() => {
+        return {
+          rows: mounth,
+          columns: time
+        }
+      })
+      flip.current = true;
+    }
+  }
+console.log(transpose);
 
   return (
     <div className="App" >
@@ -63,8 +84,8 @@ function App() {
       </Card> */}
 
       {/* <UserList users={users}/> */}
-
-      <Table rows={mounth} columns={time}/>
+      <button type='button' onClick={transposeHandler}>Transpose</button>
+      <Table rows={mounth} columns={time} rowsCols={transpose}/>
 
       {/* <BrowserRouter>
         <div>

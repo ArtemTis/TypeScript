@@ -1,12 +1,19 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
 import '../../styles.css'
+import { ITable } from '../../types/types'
 
-interface TableProps {
+interface TableProps<ITable> {
     rows: number[]
     columns: string[]
+    rowsCols: ITable
 }
 
-const Table: FC<TableProps> = ({ rows, columns }) => {
+const Table: FC<TableProps<ITable>> = ({ rows, columns, rowsCols }) => {
+
+    const [product, setProduct] = React.useState<ITable>(rowsCols);
+
+    console.log(product);
+
     return (
         <table>
             <thead>
