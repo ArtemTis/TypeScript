@@ -52,9 +52,9 @@ function App() {
 
   const [transpose, setTranspose] = useState<ITable>({ rows: mounth, columns: time });
   let flip = useRef<boolean>(true);
-  
+
   const transposeHandler = (e: React.MouseEvent<HTMLButtonElement>): void => {
-     
+
     if (flip.current) {
       setTranspose(() => {
         return {
@@ -73,7 +73,12 @@ function App() {
       flip.current = true;
     }
   }
-console.log(transpose);
+
+  let arrTable = [
+    [...time],
+    [mounth[0], 0]
+  ]
+  console.log(transpose);
 
   return (
     <div className="App" >
@@ -85,7 +90,7 @@ console.log(transpose);
 
       {/* <UserList users={users}/> */}
       <button type='button' onClick={transposeHandler}>Transpose</button>
-      <Table rows={mounth} columns={time} rowsCols={transpose}/>
+      <Table rows={mounth} columns={time} rowsCols={transpose} />
 
       {/* <BrowserRouter>
         <div>
