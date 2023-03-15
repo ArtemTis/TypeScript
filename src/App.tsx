@@ -10,6 +10,7 @@ import TodoItemPage from './components/TodoItemPage';
 import Table from './components/table/Table';
 import Checkbox from './components/mobx/Checkbox';
 import Input from './components/mobx/Input';
+import List from './components/mobx/List';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -96,6 +97,7 @@ function App() {
 
       <Checkbox/>
       <Input/>
+      <List/>
       {/* <BrowserRouter>
         <div>
           <NavLink to={"/users"}>Пользователи</NavLink>
