@@ -8,6 +8,8 @@ import { NavLink } from 'react-router-dom';
 import UserItemPage from './components/UserItemPage';
 import TodoItemPage from './components/TodoItemPage';
 import Table from './components/table/Table';
+import Checkbox from './components/mobx/Checkbox';
+import Input from './components/mobx/Input';
 
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
@@ -92,6 +94,8 @@ function App() {
       <button type='button' onClick={transposeHandler}>Transpose</button>
       <Table rows={mounth} columns={time} rowsCols={transpose} />
 
+      <Checkbox/>
+      <Input/>
       {/* <BrowserRouter>
         <div>
           <NavLink to={"/users"}>Пользователи</NavLink>
