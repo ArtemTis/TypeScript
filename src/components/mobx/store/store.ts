@@ -1,25 +1,10 @@
-import { action, makeObservable, observable } from 'mobx'
+import { injectStores } from "@mobx-devtools/tools";
+import FormStore from "../FormStore";
 
-// const checkboxStore = observable({
-//     checked: false,
-//     handlerCheck () {
-//         this.checked = !this.checked;
-//     }
-// })
+const formStore = new FormStore();
 
-class CheckboxStore {
-    checked: boolean = false;
+injectStores({
+    formStore
+})
 
-    constructor() {
-        makeObservable(this, {
-            checked: observable,
-            handlerCheck: action
-        })
-    }
-
-    handlerCheck() {
-        this.checked = !this.checked;
-    }
-}
-
-export default CheckboxStore;
+export {formStore}
