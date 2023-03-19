@@ -85,32 +85,7 @@ function App() {
 
   return (
     <div className="App" >
-      {/* <EventsExample/>
-      <Card width="200px" height="200px" variant={CardVariant.outlinde} clickFunc={(num) => console.log('click ' + num)
-      } >
-        <button>Btn</button>
-      </Card> */}
-
-      {/* <UserList users={users}/> */}
-      <button type='button' onClick={transposeHandler}>Transpose</button>
-      <Table rows={mounth} columns={time} rowsCols={transpose} />
-
-      <Checkbox/>
-      <Input/>
-      <List/>
-      {/* <BrowserRouter>
-        <div>
-          <NavLink to={"/users"}>Пользователи</NavLink>
-          <NavLink to={"/todos"}>Список дел</NavLink>
-
-        </div>
-        <Routes>
-          <Route path={'/users'} element={<UserPage />} />
-          <Route path={'/todos'} element={<TodosPage />} />
-          <Route path={'/todos/:id'} element={<TodoItemPage />} />
-          <Route path={'/users/:id'} element={<UserItemPage />} />
-        </Routes>
-      </BrowserRouter> */}
+   
     </div>
   );
 }
