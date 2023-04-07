@@ -5,14 +5,12 @@ import { ITable } from '../../types/types'
 interface TableProps<ITable> {
     rows: number[]
     columns: string[]
-    rowsCols: ITable
+    // rowsCols: ITable
 }
 
-const Table: FC<TableProps<ITable>> = ({ rows, columns, rowsCols }) => {
+const Table: FC<TableProps<ITable>> = ({ rows, columns }) => {
 
-    const [product, setProduct] = React.useState<ITable>(rowsCols);
-
-    console.log(product);
+    //const [product, setProduct] = React.useState<ITable>(rowsCols);
 
     return (
         <table>

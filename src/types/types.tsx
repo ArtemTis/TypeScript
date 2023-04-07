@@ -25,3 +25,9 @@ export interface ITable {
     rows: string[] | number[];
     columns: string[] | number[];
 }
+
+export interface Booking {
+    location: string;
+    game: string;
+    quantity: number;
+}
